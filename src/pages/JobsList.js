@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 
 function JobsList() {
@@ -20,6 +21,7 @@ function JobsList() {
 
   return (
     <div>
+      <Header/>
       <h2>Jobs List</h2>
       <ul>
         {jobs.map(job => (

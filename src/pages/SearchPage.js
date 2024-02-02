@@ -59,33 +59,60 @@ function SearchPage() {
   return (
     <div>
     <Header />
-      <h1>Request job scrapping</h1>
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Location"
-          value={locationSearchTerm}
-          onChange={handleLocationSearchChange}
-        />
-        <input
-          type="text"
-          placeholder="Position"
-          value={positionSearchTerm}
-          onChange={handlePositionSearchChange}
-        />
-        <button type="submit">Search and scrap data</button>
-      </form>
+      <div class="container">
+        <form class="row g-3 mb-5" onSubmit={handleSearchSubmit}>
+          <div class="col-sm-12">
+          <label for="location" class="form-label">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Location"
+              value={locationSearchTerm}
+              onChange={handleLocationSearchChange}
+              required
+            />
+          </div>
+          <div class="col-sm-12">
+          <label for="position" class="form-label">Position</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Position"
+              value={positionSearchTerm}
+              onChange={handlePositionSearchChange}
+              required
+            />
+          </div>
 
-      <div>
-      <h2>Search Requests</h2>
-      <ul>
-        {searchRequestsList.map(searchRequest => (
-          <li key={searchRequest.id}>
-            {searchRequest._id}: {searchRequest.searchParams.position}, {searchRequest.searchParams.location}, {searchRequest.status}
-          </li>
-        ))}
-      </ul>
-    </div>
+          <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-primary ms-auto">Search and scrap data</button>
+          </div>
+        </form>
+
+        <hr />
+
+        <p class="h4">Search requests</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Position</th>
+              <th scope="col">Location</th>
+              <th scope="col" class="text-end">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          {searchRequestsList.map(searchRequest => (
+              <tr key={searchRequest.id}>
+                <th scope="row">{searchRequest._id}</th>
+                <td>{searchRequest.searchParams.position}</td>
+                <td>{searchRequest.searchParams.location}</td>
+                <td class="text-end">{searchRequest.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Footer />
     </div>
   );
