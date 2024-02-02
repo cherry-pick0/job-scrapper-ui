@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
 import JobsList from './pages/JobsList';
 import JobDetails from './pages/JobDetails';
+import "halfmoon/css/halfmoon.min.css";
 
 function App() {
   return (
